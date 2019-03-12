@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>CNPJ </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <script>
+        const validaCNPJ = cnpj => {
+            // Valores que serão feitas as multiplicações
+            // do Array
+            let CNPJArray = [5,4,3,2,9,8,7,6,5,4,3,2];
+            
+            // Recebe o valor do CNPJ e filtra ele
+            let CNPJFilter = cnpj;
+            
+            // Remove ponto, barra e traço, transforma em Array e
+            // remove os dois ultimos itens
+            CNPJFilter = CNPJFilter.replace(/[^\d]/g, '').split('').splice(0, 12);
+            
+            // Multiplica os dois arrays para verificação do
+            // digito verificador.
+            let CNPJMultiplies = 0;
+            for (let index = 0; index <= 11; index++){
+                CNPJMultiplies += (CNPJArray[index] * CNPJFilter[index]);
+            }
+            
+            // Valor total da divisão
+            let GetFirstVerifyDigit = (CNPJMultiplies / 11).toFixed(1);
+
+            // Pega o ultimo item e faz comparação se o número é maior
+            // que 2.
+            let GetLastDigit = parseInt(GetFirstVerifyDigit[3])
+            let FirstVerifyDigit = 0;
+            if (GetLastDigit <= 2){
+                FirstVerifyDigit = GetLastDigit =  0;
+                console.log(FirstVerifyDigit)
+            } else {
+                FirstVerifyDigit = 11 - parseInt(GetFirstVerifyDigit[3]) 
+                console.log(FirstVerifyDigit)
+            }   
+            
+            // Second Validation 
+            // Valores que serão feitas as multiplicações
+            // do Array
+            let SecondCNPJArray = [6,5,4,3,2,9,8,7,6,5,4,3,2];
+            
+            // Recebe o valor do CNPJ e filtra ele
+            let SecondCNPJFilter = cnpj;
+            
+            // Remove ponto, barra e traço, transforma em Array e
+            // remove os dois ultimos itens
+            SecondCNPJFilter = SecondCNPJFilter.replace(/[^\d]/g, '').split('').splice(0, 12);
+            // Adiciona o ultimo item
+            SecondCNPJFilter.push(FirstVerifyDigit)
+            
+            // Multiplica os dois arrays para verificação do
+            // digito verificador.
+            let SecondCNPJMultiplies = 0;
+            for (let index = 0; index <= 12; index++){
+                SecondCNPJMultiplies += (SecondCNPJArray[index] * SecondCNPJFilter[index]);
+            }
+            
+            // Valor total da divisão
+            let GetSecondVerifyDigit = (SecondCNPJMultiplies / 11).toFixed(2);
+            GetSecondVerifyDigit = Math.ceil(GetSecondVerifyDigit)
+            console.log(GetSecondVerifyDigit)
+
+            // Pega o ultimo item e faz comparação se o número é maior
+            // que 2.
+            let SecondGetLastDigit = parseInt(GetSecondVerifyDigit[3])
+            console.log(SecondGetLastDigit);
+            
+            let SecondVerifyDigit = 0;
+            if (SecondGetLastDigit <= 2){
+                SecondVerifyDigit = SecondGetLastDigit =  0;
+                console.log(SecondVerifyDigit)
+            } else {
+                SecondVerifyDigit = 11 - parseInt(GetSecondVerifyDigit[3]);
+                console.log(SecondVerifyDigit)
+            }  
+        }
+    </script>
+</body>
+</html>
