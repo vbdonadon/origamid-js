@@ -1,56 +1,43 @@
-const instrumentos = ['Guitarra', 'Baixo', 'Violão'];
-const precos = [45, 99, 69, 89];
+const comidas = ['Pizza', 'Frango', 'Carne', 'Macarrão'];
+// Remova o primeiro valor de comidas e coloque em uma variavel
+let primeiroValor = comidas.shift();
+console.log(primeiroValor);
+// Remova o último valor de comidas e coloque em uma variavel
+let ultimoValor = comidas.pop();
+console.log(ultimoValor);
+// Adicione 'Arroz' ao final da array
+comidas.push('Arroz');
+console.log(comidas);
+// Adicione 'Peixe' e 'Batata' ao início da array
+comidas.unshift('Peixe', 'Batata');
+console.log(comidas);
 
-const dados = [
-    new String('Tipo 1'), ['Carro', 'Portas', {cor: 'Azul', preco: 2000}], 
-    function andar(nome){ console.log(nome) }
-]
+const estudantes = ['Marcio', 'Brenda', 'Joana', 'Kleber', 'Julia'];
+// Arrume os estudantes em ordem alfabética
+estudantes.sort();
+console.log(estudantes);
+// Inverta a ordem dos estudantes
+estudantes.reverse();
+console.log(estudantes);
+// Verifique se Joana faz parte dos estudantes
+estudantes.includes('Joana');
+console.log(estudantes.includes('Joana'));
+// Verifique se Juliana faz parte dos estudantes
+console.log(estudantes.includes('Juliana'));
 
-dados[2]('Ford');
-console.log(dados[1][2].cor);
+let html = `
+            <section>
+            <div>Sobre</div>
+            <div>Produtos</div>
+            <div>Contato</div>
+            </section>
+           `
+// Substitua section por ul e div com li, utilizando
+// split e join
+html = html.split('section').join('ul');
+html = html.split('div').join('li');
 
-const carros = new Array('Corola', 'Mustang', 'Honda');
-console.log(carros[1]); // Mustang
-carros[2] = 'Ferrari';
-carros[10] = 'Parati';
-carros.length; // 11
-
-const li = document.querySelectorAll('li');
-const arrayLi = Array.from(li);
-
-const obj = {
-    0: 'Vinicius',
-    1: 'Bium',
-    2: 'Donadon',
-    length: 3
-}
-
-const objArray = Array.from(obj);
-console.log(Array.isArray(objArray));
-
-// Array.of cria uma array com os itens passados
-// por parametro
-Array.of(10); // [10]
-Array.of(1, 2, 3, 4); // [1, 2, 3, 4];
-new Array(5); // [,,,,]
-Array(5); // [,,,,]
-Array(1,2,3,4) // [1, 2, 3, 4]
-
-const frutas = ['Banana', 'Pêra', ['Uva Roxa', 'Uva Verde']];
-frutas.length; // 3
-
-frutas[0].length; // 6
-frutas[1].length; // 5
-frutas[2].length; // 2
-
-// Modificadores de Array .sort()
-// Além de retornar um valor, eles modificam a
-// array original. o .sort organizado pelo unicode
-const instrumentos1 = ['Guitarra', 'Baixo', 'Violão'];
-instrumentos1.sort();
-console.log(instrumentos1);
-
-const idades = [32,21,33,43,1,12,8];
-idades.sort();
-console.log(idades);
-
+const carros = ['Ford', 'Fiat', 'VW', 'Honda'];
+// Remove o último carro, mas antes de remover salve
+// a array original em outra variavel
+let novoCarros = [].concat(carros);
