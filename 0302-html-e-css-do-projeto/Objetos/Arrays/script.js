@@ -40,4 +40,5 @@ html = html.split('div').join('li');
 const carros = ['Ford', 'Fiat', 'VW', 'Honda'];
 // Remove o último carro, mas antes de remover salve
 // a array original em outra variavel
-let novoCarros = [].concat(carros);
+let novoCarros = carros.slice();
+carros.pop();
